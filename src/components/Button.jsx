@@ -1,6 +1,10 @@
-const Button = ({ type, children }) => {
+const Button = ({ buttonType, children, onClick }) => {
   return (
-    <button className={`btn ${type === 'secondary' ? 'btn--secondary' : ''}`}>
+    <button
+      type="submit"
+      className={`btn ${buttonType === 'secondary' ? 'btn--secondary' : ''}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
