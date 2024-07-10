@@ -1,8 +1,15 @@
-const ItemList = ({ items }) => {
+const ItemList = ({ items, handleDeleteItem, handleToggleItem }) => {
   return (
     <ul>
       {items.map((item) => {
-        return <Item key={item.id} item={item} />;
+        return (
+          <Item
+            key={item.id}
+            item={item}
+            handleDeleteItem={handleDeleteItem}
+            handleToggleItem={handleToggleItem}
+          />
+        );
       })}
     </ul>
   );
@@ -10,15 +17,19 @@ const ItemList = ({ items }) => {
 
 export default ItemList;
 
-const Item = ({ item }) => {
+const Item = ({ item, handleDeleteItem, handleToggleItem }) => {
   return (
     <li className="item">
       <label>
-        <input type="checkbox" checked={item.packed} />
+        <input
+          type="checkbox"
+          checked={item.packed}
+          onChange={() => handleToggleItem(item.id)}
+        />
         {item.name}
       </label>
 
-      <button>❌</button>
+      <button onClick={() => handleDeleteItem(item.id)}>❌</button>
     </li>
   );
 };
