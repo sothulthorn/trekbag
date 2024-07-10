@@ -1,9 +1,10 @@
 import Logo from './Logo';
 import Counter from './Counter';
-import { useItemContext } from '../lib/hooks';
+
+import { useItemStore } from '../stores/itemsStore';
 
 const Header = () => {
-  const { items } = useItemContext();
+  const items = useItemStore((state) => state.items);
 
   return (
     <header>
